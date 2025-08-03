@@ -1,0 +1,16 @@
+.responses {
+    background-color: #F7F9F7;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.response {
+    width: 85%;
+    margin-bottom: 15px;
+    margin-top: 25px;
+}

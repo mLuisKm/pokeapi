@@ -1,0 +1,27 @@
+.responseHeader {
+    margin-bottom: 20px;
+    font-weight: 900;
+}
+
+.responseItems {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.itemTitle {
+    margin-bottom: 0.7rem;
+}
+
+.itemSingle {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    margin-bottom: 25px;
+}
+
+.itemType {
+    width: 13px;
+    height: auto;
+    margin-left: 5px;
+    margin-bottom: -1px;
+}
