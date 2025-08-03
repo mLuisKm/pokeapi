@@ -52,7 +52,6 @@ export default function ByAbility({name, response}) {
                                             alt={`${res.name} sprite`}
                                             width={180}
                                             height={38}
-                                            priority
                                         />
                                     </Tooltip>
                                 </React.Fragment>
