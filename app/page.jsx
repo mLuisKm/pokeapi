@@ -5,6 +5,7 @@ import styles from "./page.module.css";
 import ResponseSection from "./components/ResponseSection/ResponseSection";
 import ByPokemon from "./components/ByPokemon/ByPokemon";
 import ByAbility from "./components/ByAbility/ByAbility";
+import { Tooltip } from "react-tooltip";
 
 export default function Home() {
     const [searchValue, setSearchValue] = useState('');
