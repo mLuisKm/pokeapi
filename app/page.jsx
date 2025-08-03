@@ -34,7 +34,7 @@ export default function Home() {
 
     return (
         <div className={styles.whole}>
-            <a href="https://github.com/2023-SEMI-DESIX-G2/milla-luis/tree/main/parcial1">
+            <a href="https://github.com/mLuisKm">
                 <Image
                     className={styles.git}
                     src="/github.png"
