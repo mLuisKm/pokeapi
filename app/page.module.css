@@ -7,8 +7,8 @@
     width: 30px;
     height: auto;
     position: absolute;
-    right: 40px;
-    top: 20px;
+    right: 1.5%;
+    top: 3%;
 }
 
 .formCard {
@@ -70,7 +70,7 @@
     border: none;
     border-radius: 5px;
     padding: 5px 10px 5px 10px;
-    width: 125px;
+    width: 25%;
 }
 
 .pokemonInput, .pokemonSearchType {
@@ -109,6 +109,6 @@
     }
 
     .whole {
-        width: 70%;
+        width: 85%;
     }
 }
