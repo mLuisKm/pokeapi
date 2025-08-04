@@ -30,3 +30,8 @@
     width: 10rem;
     height: auto;
 }
+
+.aDesc {
+    max-width: 20%;
+    white-space: normal;
+}

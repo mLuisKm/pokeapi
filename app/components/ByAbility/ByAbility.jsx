@@ -9,7 +9,7 @@ export default function ByAbility({name, response}) {
     const [data, setData] = useState([]);
     useEffect(() => {
         const getSprites = async () => {
-            const spritePromises = response.map(async (poke, index) => {
+            const spritePromises = response.capable.map(async (poke, index) => {
                 const req = await fetch(`/api/pokemon/${poke.name}`)
                 const res = await req.json()
                 return {name: poke.name, hidden:poke.hidden, sprite: res.basics.sprites.front}
@@ -22,9 +22,12 @@ export default function ByAbility({name, response}) {
 
     return (
         <div>
-        <div id="response-header" className={styles.responseHeader}>
-                    <span>{name.charAt(0).toUpperCase() + name.slice(1)}</span>
+            <div id="response-header" className={styles.responseHeader}>
+                <span>{name.charAt(0).toUpperCase() + name.slice(1)}</span>
             </div>
+            <Tooltip className={styles.aDesc} anchorSelect={'#response-header'} place="top">
+                <span>{response.effect}</span>
+            </Tooltip>
             <div id="response-items" className={styles.responseItems}>
                 <div className={styles.itemSingle}>
                     <span id="item-title" className={styles.itemTitle}>Who can learn it?</span>
