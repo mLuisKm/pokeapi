@@ -6,7 +6,8 @@ import { useEffect, useState } from "react";
 import { Tooltip } from "react-tooltip";
 
 export default function ByPokemon({basics, evolves, abilities}) {
-    const [data, setData] = useState([]);
+    const [pSprites, setpSprites] = useState([]);
+    const [abDesc, setAbDesc] = useState([]);
         useEffect(() => {
             const getSprites = async () => {
                 const spritePromises = evolves.map(async (poke, index) => {
@@ -15,10 +16,23 @@ export default function ByPokemon({basics, evolves, abilities}) {
                     return {name: poke.name, is_baby:poke.is_baby, sprite: res.basics.sprites.front}
                 })
                 const spriteResolved = await Promise.all(spritePromises)
-                setData(spriteResolved)
+                setpSprites(spriteResolved)
             }
             getSprites()
         }, [evolves])
+        useEffect(() => {
+            const getAbDesc = async () => {
+                const descPromises = abilities.map(async (desc, index) => {
+                    const req = await fetch(`/api/ability/${desc.name}`)
+                    const res = await req.json()
+                    console.log(res.response.effect)
+                    return {name: desc.name, hidden: desc.hidden, desc: res.response.effect}
+                })
+                const descResolved = await Promise.all(descPromises)
+                setAbDesc(descResolved)
+            }
+            getAbDesc()
+        }, [abilities])
     return(
         (basics && evolves && abilities &&
         <div>
@@ -55,7 +69,7 @@ export default function ByPokemon({basics, evolves, abilities}) {
                 <div className={styles.itemLeft}>
                     <span id="item-title" className={styles.itemTitle}>Evolution chain</span>
                     <ul>
-                        {data.map((evolve, index) => (
+                        {pSprites.map((evolve, index) => (
                             <React.Fragment key={index}>
                                 <li id={`${evolve.name}`} className={styles.specie}>
                                     {evolve.name}
@@ -85,19 +99,24 @@ export default function ByPokemon({basics, evolves, abilities}) {
                 <div className={styles.itemRight}>
                     <span id="item-title" className={styles.itemTitle}>Abilities</span>
                     <ul>
-                        {abilities.map((ability, index) => (
-                            <li key={index}>
-                                {ability.name}
-                                {ability.hidden &&
-                                <Image
-                                    className={styles.itemType}
-                                    src="/hiden.png"
-                                    alt=""
-                                    width={180}
-                                    height={38}
-                                    priority
-                                />}
-                            </li>
+                        {abDesc.map((ability, index) => (
+                            <React.Fragment key={index}>
+                                <li id={`${ability.name}`}>
+                                    {ability.name}
+                                    {ability.hidden &&
+                                    <Image
+                                        className={styles.itemType}
+                                        src="/hiden.png"
+                                        alt=""
+                                        width={180}
+                                        height={38}
+                                        priority
+                                    />}
+                                </li>
+                                <Tooltip className={styles.aDesc} anchorSelect={`#${ability.name}`} place="top">
+                                    <span>{ability.desc}</span>
+                                </Tooltip>
+                            </React.Fragment>
                         ))}
                     </ul>
                 </div>

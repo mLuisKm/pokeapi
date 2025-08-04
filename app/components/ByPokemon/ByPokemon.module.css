@@ -61,3 +61,8 @@
     margin-bottom: 20px;
     font-weight: 900;
 }
+
+.aDesc {
+    max-width: 20%;
+    white-space: normal;
+}
