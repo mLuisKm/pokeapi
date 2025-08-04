@@ -1,9 +1,24 @@
+"use client"
 import React from "react";
 import Image from "next/image";
 import styles from "./ByPokemon.module.css"
+import { useEffect, useState } from "react";
+import { Tooltip } from "react-tooltip";
 
 export default function ByPokemon({basics, evolves, abilities}) {
-
+    const [data, setData] = useState([]);
+        useEffect(() => {
+            const getSprites = async () => {
+                const spritePromises = evolves.map(async (poke, index) => {
+                    const req = await fetch(`/api/pokemon/${poke.name}`)
+                    const res = await req.json()
+                    return {name: poke.name, is_baby:poke.is_baby, sprite: res.basics.sprites.front}
+                })
+                const spriteResolved = await Promise.all(spritePromises)
+                setData(spriteResolved)
+            }
+            getSprites()
+        }, [evolves])
     return(
         (basics && evolves && abilities &&
         <div>
@@ -40,19 +55,30 @@ export default function ByPokemon({basics, evolves, abilities}) {
                 <div className={styles.itemLeft}>
                     <span id="item-title" className={styles.itemTitle}>Evolution chain</span>
                     <ul>
-                        {evolves.map((evolve, index) => (
-                            <li key={index} className={styles.specie}>
-                                {evolve.name}
-                                {evolve.is_baby &&
-                                <Image
-                                    className={styles.itemType}
-                                    src="/baby.png"
-                                    alt=""
-                                    width={180}
-                                    height={38}
-                                    priority
-                                />}
-                            </li>
+                        {data.map((evolve, index) => (
+                            <React.Fragment key={index}>
+                                <li id={`${evolve.name}`} className={styles.specie}>
+                                    {evolve.name}
+                                    {evolve.is_baby &&
+                                    <Image
+                                        className={styles.itemType}
+                                        src="/baby.png"
+                                        alt=""
+                                        width={180}
+                                        height={38}
+                                        priority
+                                    />}
+                                </li>
+                                <Tooltip anchorSelect={`#${evolve.name}`} place="top">
+                                    <Image
+                                        className={styles.imgPokeToolTip}
+                                        src={evolve.sprite}
+                                        alt={`${evolve.name} sprite`}
+                                        width={180}
+                                        height={38}
+                                    />
+                                </Tooltip>
+                            </React.Fragment>
                         ))}
                     </ul>
                 </div>

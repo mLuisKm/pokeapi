@@ -52,6 +52,11 @@
     height: auto;
 }
 
+.imgPokeToolTip {
+    width: 10rem;
+    height: auto;
+}
+
 .responseHeader {
     margin-bottom: 20px;
     font-weight: 900;
