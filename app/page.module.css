@@ -4,7 +4,7 @@
 }
 
 .git {
-    width: 30px;
+    width: 3%;
     height: auto;
     position: absolute;
     right: 1.5%;
@@ -110,5 +110,13 @@
 
     .whole {
         width: 85%;
+    }
+
+    .searchType {
+        margin-top: 3%;
+    }
+
+    .git {
+        width: 5%;
     }
 }

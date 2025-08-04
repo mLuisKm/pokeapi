@@ -92,3 +92,9 @@ li {
 body, input, select {
     font-family: 'Montserrat', sans-serif;
 }
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
