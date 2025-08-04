@@ -25,7 +25,6 @@ export default function ByPokemon({basics, evolves, abilities}) {
                 const descPromises = abilities.map(async (desc, index) => {
                     const req = await fetch(`/api/ability/${desc.name}`)
                     const res = await req.json()
-                    console.log(res.response.effect)
                     return {name: desc.name, hidden: desc.hidden, desc: res.response.effect}
                 })
                 const descResolved = await Promise.all(descPromises)
