@@ -35,3 +35,10 @@
     max-width: 20%;
     white-space: normal;
 }
+
+@media (max-width: 768px) {
+    .aDesc {
+        max-width: 40%;
+        white-space: normal;
+    }
+}
