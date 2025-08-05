@@ -72,7 +72,7 @@ export default function PageContent({pokemons , abilities}) {
                                             name="pokemon-input"
                                             value={searchValue}
                                             onChange={(e) => setSearchValue(e.target.value)}/>
-                                    {searchType=='pokemon' ? 
+                                    {pokemons && abilities && searchType=='pokemon' ? 
                                     <datalist id="search-list">
                                         {pokemons.map((pokeInfo, index) => (
                                             <option key={index} value={pokeInfo.name}></option>
