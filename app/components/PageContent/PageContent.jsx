@@ -16,12 +16,14 @@ export default function PageContent({pokemons , abilities}) {
         e.preventDefault();
         if (!searchValue.trim()) {
             setErrorMessage('You can’t catch ‘em all if you enter nothing, silly!')
+            setResponseData(null)
             return;
         }
         const req = await fetch(`/api/${searchType}/${searchValue}`);
         const res = await req.json();
         if (res.message) {
             setErrorMessage(res.message)
+            setResponseData(null)
             return
         }
         setErrorMessage('')
