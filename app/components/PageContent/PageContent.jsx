@@ -24,6 +24,7 @@ export default function PageContent({pokemons , abilities}) {
             setErrorMessage(res.message)
             return
         }
+        setErrorMessage('')
         setResponseData(res);
     };
 
