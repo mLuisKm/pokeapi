@@ -17,7 +17,7 @@ export async function GET(request, { params }) {
         })
     } catch (error) {
         return new NextResponse(
-            JSON.stringify({ error: 'Error fetching pokemons that can perform the ability' }),
+            JSON.stringify({ message: 'Oops! That doesn’t look like a valid ability name or ID.' }),
             {
                 status: 500,
                 headers: {
