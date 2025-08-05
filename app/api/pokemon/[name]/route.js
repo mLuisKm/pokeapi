@@ -6,7 +6,6 @@ export async function GET(request, { params }) {
     const { name } = paramsProps
     try {
         const pokemon = await getPokemon(name)
-
         return new NextResponse(JSON.stringify(pokemon), {
             status: 200,
             headers: {
@@ -18,9 +17,9 @@ export async function GET(request, { params }) {
         })
     } catch (error) {
         return new NextResponse(
-            JSON.stringify({ error: 'Error fetching pokemon' }),
+            JSON.stringify({ message: 'Oops! That doesn’t look like a valid ability name or ID.' }),
             {
-                status: 500,
+                status: 404,
                 headers: {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': '*',

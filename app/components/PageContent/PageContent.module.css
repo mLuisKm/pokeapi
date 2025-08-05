@@ -31,7 +31,7 @@
     justify-content: center;
     width: 100%;
     margin-top: 20px;
-    margin-bottom: 10px;
+    padding-bottom: 3.2%;
 }
 
 .pokeTitle {
@@ -61,7 +61,6 @@
 .formButtons {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 15px;
 }
 
 .clean, .search {
@@ -71,6 +70,14 @@
     border-radius: 5px;
     padding: 5px 10px 5px 10px;
     width: 25%;
+}
+
+.clean:hover, .search:hover {
+    background-color: #1972f8;
+}
+
+.clean:active, .search:active {
+    border: 1px solid black;
 }
 
 .pokemonInput, .pokemonSearchType {

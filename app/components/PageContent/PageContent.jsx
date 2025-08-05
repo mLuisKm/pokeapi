@@ -18,11 +18,13 @@ export default function PageContent({pokemons , abilities}) {
             setErrorMessage('You can’t catch ‘em all if you enter nothing, silly!')
             return;
         }
-        console.log("Buscando:", searchType, searchValue);
         const req = await fetch(`/api/${searchType}/${searchValue}`);
         const res = await req.json();
+        if (res.message) {
+            setErrorMessage(res.message)
+            return
+        }
         setResponseData(res);
-        res.message ? setErrorMessage(res.message) : setErrorMessage('')
     };
 
     const handleClear = () => {
