@@ -43,22 +43,22 @@ export default function ByPokemon({basics, evolves, abilities}) {
                 <div className={styles.itemLeft}>
                     <span id="item-title" className={styles.itemTitle}>Sprites</span>
                     <div className={styles.itemImage}>
-                        <Image
+                        {basics.sprites.front && <Image
                             className={styles.imgPoke}
                             src={basics.sprites.front}
                             alt=""
                             width={180}
                             height={38}
                             priority
-                        />
-                        <Image
+                        />}
+                        {basics.sprites.back && <Image
                             className={styles.imgPoke}
                             src={basics.sprites.back}
                             alt=""
                             width={180}
                             height={38}
                             priority
-                        />
+                        />}
                     </div>
                 </div>
                 <div className={styles.itemRight}>
